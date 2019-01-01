@@ -10,22 +10,7 @@ import restaurant from './modules/restaurant'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
-  state: {
-      //
-  },
-  mutations: {
-      //
-  },
-  actions: {
 
-  },
-  modules: {
-    user,
-    menu,
-    promotion,
-    order,
-    restaurant
-  }
 })
 
 export default store
