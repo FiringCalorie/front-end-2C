@@ -58,15 +58,6 @@ const mutations = {
     console.log('selected dishes add 2', state.selectDishes)
     return payload.dish
   },
-  decreaseCart (state, payload) {
-    let count = payload.dish.count
-    state.selectDishes.filter(dish => dish.id === payload.dish.id)[0].count = count - 1
-    for (let i = 0; i < state.menus.length; ++i) {
-
-    }
-    console.log('selected dishes delete', state.selectDishes)
-    return payload.dish
-  },
   changeSelectedId (state, payload) {
     state.selectedId = payload.id
   },
