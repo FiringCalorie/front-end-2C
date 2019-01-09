@@ -58,6 +58,18 @@ const mutations = {
     console.log('selected dishes add 2', state.selectDishes)
     return payload.dish
   },
+  decreaseCart (state, payload) {
+    let count = payload.dish.count
+    state.selectDishes.filter(dish => dish.id === payload.dish.id)[0].count = count - 1
+    for (let i = 0; i < state.menus.length; ++i) {
+      if (state.menus[i].dishes.filter(dish => dish.id === payload.dish.id).length > 0) {
+        state.menus[i].dishes.filter(dish => dish.id === payload.dish.id)[0].count = count - 1
+        break
+      }
+    }
+    console.log('selected dishes delete', state.selectDishes)
+    return payload.dish
+  },
   changeSelectedId (state, payload) {
     state.selectedId = payload.id
   },
@@ -75,7 +87,13 @@ const mutations = {
     }
   },
   emptySelectedDish (state, payload) {
-
+    for (let i = 0; i < state.menus.length; ++i) {
+      state.menus[i].dishes.forEach((element, index, arr) => {
+        if ('count' in element) {
+          element.count = 0
+        }
+      })
+    }
   }
 }
 
